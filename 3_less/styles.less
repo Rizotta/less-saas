@@ -1,0 +1,118 @@
+@import url(color2.less);
+
+body {
+	background-color: @bgc-body;
+}
+h1 {
+	color: @c-header;
+}
+h2 {
+	color: @c-header;
+}
+p {
+	color: @c-text;
+}
+
+.text-shadow {
+	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+
+.border-radius(@radius: 10px) {
+	border-radius: @radius;
+}
+
+.box-shadow(@x: 0, @y: 0, @blur: 10px, @color: rgba(0,0,0,5)) {
+	box-shadow: @arguments;
+}
+
+.gradient(@start, @end) {
+	  background-image: linear-gradient(to bottom, @start, @end);
+}
+
+h1, h2, p {
+	.text-shadow;
+}
+
+.clearfix {
+  display: block;
+  zoom: 1;
+
+  &:after {
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+.content {
+	.clearfix;
+	padding: 5px 10px;
+	background-color: @bgc-content;
+	width: 600px;
+	margin: 10px auto;
+	.border-radius;
+	.box-shadow;
+	.gradient(@bgc-content, @bgc-content-dark);
+}
+
+.sideblock(left, @color) {
+	float: left;
+	margin: 0 20px 10px 0;
+}
+
+.sideblock(right, @color) {
+	float: right;
+	margin: 0 0 10px 20px;
+}
+
+.sideblock(@_, @color) {	/*базовый блок с параметрами*/
+	padding: 5px 10px;
+	width: 50%;
+	.border-radius;
+	.box-shadow;
+	background-color: @color;
+	color: @c-text-i;
+}
+
+.aside {				/*обращение к блоку по классу*/
+	.sideblock(left, @bgc-aside);
+}
+
+/* --- кнопки --- */
+
+.button(@color) when (lightness(@color) >= 50) {
+	color: black;
+}
+
+.button(@color) when (lightness(@color) < 50) {
+	color: white;
+}
+
+.button(@color) {
+	background-color: @color;
+	.border-radius;
+	display: block;
+	width: 300px;
+	height: 100px;
+	text-align: center;
+	line-height: 100px;
+	font-size: 35px;
+	text-decoration: none;
+	font-weight: bold;
+	margin-bottom: 20px;
+	&:hover {
+		background-color: darken(@color, 10%);
+	}
+}
+
+.btn-dark {
+	.button(#333);
+}
+
+.btn-light {
+	.button(#ddd);
+}
