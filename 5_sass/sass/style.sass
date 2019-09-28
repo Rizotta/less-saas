@@ -1,0 +1,60 @@
+$width-all: 992px
+$btn-color: #36aa51
+
+=border-radius($radius)
+    -webkit-border-radius: $radius
+    -ms-border-radius: $radius
+    -moz-border-radius: $radius
+    border-radius: $radius
+
+*
+    margin: 0
+    padding: 0
+
+.margin
+    width: $width-all
+    margin: 0 auto
+
+.header
+    @extend .margin
+    height: 200px
+    background-color: darkcyan
+    
+.logo
+    display: block
+    width: 50px
+    height: 50px
+    background-color: darkred
+    +border-radius(10px)
+    
+.header__logo
+    float: left
+    margin: 50px 0 0 50px
+    
+.main
+    @extend .margin
+    background-color: navajowhite
+    display: flex
+    .block
+        width: $width-all / 3
+        height: 200px
+        margin: 30px
+        border: 1px solid black
+        +border-radius(30px)
+        .btn
+            width: 70%
+            height: 30px
+            margin: 100px auto 0
+            background-color: $btn-color
+            border: 2px solid $btn-color - #333
+            +border-radius(5px)
+            
+.footer
+    @extend .margin
+    height: 200px
+    background-color: #ccc
+    
+.footer__logo
+    float: right
+    margin-top: 30px
+    margin-right: 100px
